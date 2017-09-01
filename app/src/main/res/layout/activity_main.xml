@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.nawazsharif4265.justjava.MainActivity"
+    >
+<LinearLayout
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
     >
 
@@ -20,10 +25,18 @@
         />
 
     <CheckBox
+        android:id="@+id/whipped_cream_checkbox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/Whipped_Cream"
-        android:onClick="onCheckboxClicked"
+        android:layout_marginLeft="16dp"
+        />
+
+    <CheckBox
+        android:id="@+id/whipped_chocolate_cream_checkbox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Whipped_Chocolate_Cream"
         android:layout_marginLeft="16dp"
         />
 
@@ -101,6 +114,8 @@
         android:onClick="submitOrder"
         />
 
-
-
 </LinearLayout>
+
+</ScrollView>
+
+

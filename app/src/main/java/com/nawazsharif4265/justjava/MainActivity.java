@@ -11,7 +11,9 @@ package com.nawazsharif4265.justjava;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.CheckBox;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -34,12 +36,18 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
+        boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
+        CheckBox whippedChocolateCreamCheckBox = (CheckBox) findViewById(R.id.whipped_chocolate_cream_checkbox);
+        boolean hasChocolateWhippedCream = whippedChocolateCreamCheckBox.isChecked();
         int price  = calculatePrice();
-        displayMessage( createOrderSummary(price));
+        displayMessage( createOrderSummary(price, hasWhippedCream, hasChocolateWhippedCream));
     }
 
-    private String createOrderSummary(int price) {
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolateCream) {
         String priceMessage = "Name : Kunal";
+        priceMessage += "\nAdd whipped cream ? " + addWhippedCream;
+        priceMessage += "\nAdd chocolate cream ? " + addChocolateCream;
         priceMessage = priceMessage +"\nQuantity :" + quantity;
         priceMessage = priceMessage +"\nTotal price : $"+ price;
         priceMessage = priceMessage +" wahooo";
