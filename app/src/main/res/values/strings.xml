@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Just Java</string>
+    <string name="text_view_one">Quantity</string>
+    <string name="text_view_two">0</string>
+    <string name="button">ORDER</string>
+    <string name="text_view_three">Order Summary</string>
+    <string name="buttonone">$0</string>
+    <string name="buttondecre">-</string>
+    <string name="buttonincre">+</string>
+</resources>
