@@ -7,4 +7,8 @@
     <string name="buttonone">$0</string>
     <string name="buttondecre">-</string>
     <string name="buttonincre">+</string>
+    <string name="text_view_four">Toppings</string>
+    <string name="Whipped_Cream">Whipped Cream</string>
+
+
 </resources>

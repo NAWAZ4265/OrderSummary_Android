@@ -7,6 +7,26 @@
     tools:context="com.nawazsharif4265.justjava.MainActivity"
     android:orientation="vertical"
     >
+
+    <TextView
+        android:id="@+id/text_view_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_four"
+        android:paddingTop="16dp"
+        android:paddingLeft="16dp"
+        android:paddingBottom="16dp"
+        android:textAllCaps="true"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Whipped_Cream"
+        android:onClick="onCheckboxClicked"
+        android:layout_marginLeft="16dp"
+        />
+
     <TextView
         android:id="@+id/text_view_one"
         android:layout_width="wrap_content"
@@ -15,6 +35,7 @@
         android:paddingTop="16dp"
         android:paddingLeft="16dp"
         android:paddingBottom="16dp"
+        android:textAllCaps="true"
         />
 
     <LinearLayout
