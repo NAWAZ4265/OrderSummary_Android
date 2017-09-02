@@ -14,7 +14,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.NumberFormat;
 
@@ -36,16 +38,18 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the order button is clicked.
      */
     public void submitOrder(View view) {
+        EditText editText = (EditText) findViewById(R.id.edit_text);
+        String editTextName = editText.getText().toString();
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         boolean hasWhippedCream = whippedCreamCheckBox.isChecked();
         CheckBox whippedChocolateCreamCheckBox = (CheckBox) findViewById(R.id.whipped_chocolate_cream_checkbox);
         boolean hasChocolateWhippedCream = whippedChocolateCreamCheckBox.isChecked();
-        int price  = calculatePrice();
-        displayMessage( createOrderSummary(price, hasWhippedCream, hasChocolateWhippedCream));
+        int price  = calculatePrice(hasWhippedCream, hasChocolateWhippedCream);
+        displayMessage( createOrderSummary(price, hasWhippedCream, hasChocolateWhippedCream, editTextName));
     }
 
-    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolateCream) {
-        String priceMessage = "Name : Kunal";
+    private String createOrderSummary(int price, boolean addWhippedCream, boolean addChocolateCream, String edittextname) {
+        String priceMessage = "Name : "+ edittextname;
         priceMessage += "\nAdd whipped cream ? " + addWhippedCream;
         priceMessage += "\nAdd chocolate cream ? " + addChocolateCream;
         priceMessage = priceMessage +"\nQuantity :" + quantity;
@@ -60,7 +64,14 @@ public class MainActivity extends AppCompatActivity {
      *
      * @return the price
      */
-    private int calculatePrice( ) {
+    private int calculatePrice(boolean cream_one, boolean cream_two) {
+       int basePrice = 5;
+        if(cream_one==true)  {
+            basePrice = basePrice + 1;
+            if(cream_two==true){
+                basePrice = basePrice + 2;
+            }
+        }
         return quantity * 5;
     }
 
@@ -68,18 +79,27 @@ public class MainActivity extends AppCompatActivity {
      * This method is called when the increment button is clicked.
      */
     public void increment(View view)  {
-
-            quantity = quantity + 1;
-         displayQuantity(quantity);
+           if(quantity < 100) {
+               quantity = quantity + 1;
+               displayQuantity(quantity);
+           }
+        else {
+               Toast.makeText(this, "cannot buy more than 100", Toast.LENGTH_LONG).show();
+           }
     }
 
     /**
      * This method is called when the increment button is clicked.
+     *
      */
     public void decrement(View view)  {
         if(quantity > 0) {
             quantity = quantity - 1;
             displayQuantity(quantity);
+        }
+        else {
+            Toast.makeText(this, "Less than 1 is not allow", Toast.LENGTH_SHORT).show();
+
         }
     }
 
